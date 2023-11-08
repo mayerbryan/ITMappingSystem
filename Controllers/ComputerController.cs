@@ -8,9 +8,9 @@ using ITMappingSystem.Services.ComputerServices;
 namespace ITMappingSystem.Controllers
 {
 
-    [ApiController]
+    
     [Route("api/[controller]")]
-
+    [ApiController]
     public class ComputerController : ControllerBase
     {
         private readonly IComputerService _ComputerService;
@@ -22,9 +22,19 @@ namespace ITMappingSystem.Controllers
         [HttpPost]
         public async Task<ActionResult<List<Computer>>> AddComputer(Computer computer)
         {
-            var result = _ComputerService.AddComputer(computer);
+            var result = await _ComputerService.AddComputer(computer);
             return Ok(result);
         }
+
+        [HttpDelete("{computerName}")]
+        public async Task<ActionResult<List<Computer>>> DeleteComputer(string computername)
+        {
+            var result = await _ComputerService.DeleteComputer(computername);
+            if (result is null)
+                return NotFound("this computer can't be found in the records");
+            return Ok(result);
+        }
+
 
         [HttpGet]
         public async Task<ActionResult<List<Computer>>> GetAllComputers()
@@ -32,33 +42,24 @@ namespace ITMappingSystem.Controllers
             return await _ComputerService.GetAllComputers();
         }
 
+        [HttpGet("{computerName}")]
+        public async Task<ActionResult<ComputerController>> GetSingleComputerByName(string computername)
+        {
+            Console.WriteLine("entered a request");
+            var result = await _ComputerService.GetSingleComputerByName(computername);
+            if (result is null)
+                return NotFound("this computer can't be found in the records");
+            return Ok(result);
+        }
 
-
-        // [HttpGet("{name}")]
-        // public async Task<ActionResult<ComputerController>> GetSingleComputerByName(string computername)
-        // {
-        //     var result = _ComputerService.GetSingleComputerByName(computername);
-        //     if (result is null)
-        //         return NotFound("this computer can't be found in the records");
-        //     return Ok(result);
-        // }
-
-        // [HttpDelete("id")]
-        // public async Task<ActionResult<List<Computer>>> DeleteComputer(string computername)
-        // {
-        //     var result = _ComputerService.DeleteComputer(computername);
-        //     if (result is null)
-        //         return NotFound("this computer can't be found in the records");
-        //     return Ok(result);
-        // }
-
-        // [HttpPut("{id}")]
-        // public async Task<ActionResult<List<Computer>>> UpdateComputer(string computername, Computer request)
-        // {
-        //     var result = _ComputerService.UpdateComputer(computername, request);
-        //     if (result is null)
-        //         return NotFound("this computer can't be found in the records");
-        //     return Ok(result);
-        // }
+        
+        [HttpPut("{computerId}")]
+        public async Task<ActionResult<List<Computer>>> UpdateComputer(int computerId, Computer request)
+        {
+            var result = await _ComputerService.UpdateComputer(computerId, request);
+            if (result is null)
+                return NotFound("this computer can't be found in the records");
+            return Ok(result);
+        }
     }
 }
