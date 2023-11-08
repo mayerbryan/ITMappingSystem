@@ -9,13 +9,13 @@ namespace ITMappingSystem.Services.ComputerServices
     {
         Task<List<Computer>> GetAllComputers();
         
-        Computer? GetSingleComputerByName(string name);
+        Task<Computer?> GetSingleComputerByName(string computername);
 
-        List<Computer> AddComputer(Computer computer);
+        Task<List<Computer>> AddComputer(Computer computer);
 
-        List<Computer>? UpdateComputer(string computername, Computer request);
+        Task<List<Computer>?> UpdateComputer(int computerId, Computer request);
 
-        List<Computer>? DeleteComputer(string computername);
+        Task<List<Computer>?> DeleteComputer(string computername);
 
     }
 }

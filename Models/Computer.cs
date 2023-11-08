@@ -8,7 +8,7 @@ namespace ITMappingSystem.Models
     public class Computer
     {
         public int computerID { get; set; }
-        public string computerName { get; set; }
+        public string? computerName { get; set; }
         
     }
 }
