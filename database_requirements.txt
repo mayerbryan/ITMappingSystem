@@ -1,0 +1,37 @@
+
+
+device type [ Computer, Machine, PLC, HMI, Switch, Outro ]
+device operating System
+device name
+device IP
+device network port
+device switch
+device owner (Responsible Engineer)
+device vendor
+
+additional device information:
+device location description
+device map location
+device picture
+device mapped drivers
+device servers
+device software list
+device life cycle
+device implementation date
+device related KBs
+
+vendor company name
+vendor representative
+vendor email
+vendor phone number
+
+software vendor
+software name
+software version
+software installation package path
+
+servers list
+servers address
+servers owner
+
+

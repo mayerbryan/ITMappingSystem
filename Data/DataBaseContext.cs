@@ -10,7 +10,7 @@ namespace ITMappingSystem.Data
     {
         public DataBaseContext(DbContextOptions<DataBaseContext> options) : base(options) { }
 
-        public DbSet<Computer> Computers { get; set; }
+        public DbSet<Device> Devices { get; set; }
         
     }
 }

@@ -1,6 +1,6 @@
 global using ITMappingSystem.Models;
 using ITMappingSystem.Data;
-using ITMappingSystem.Services.ComputerServices;
+using ITMappingSystem.Services.DeviceServices;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,7 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<IComputerService, ComputerService>();
+builder.Services.AddScoped<IDeviceService, DeviceService>();
 builder.Services.AddDbContext<DataBaseContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("SqlDbConnection")));
 
 var app = builder.Build();
