@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace ITMappingSystem.Models
 {
-    public class Computer
+    public class Device
     {
-        public int computerID { get; set; }
-        public string? computerName { get; set; }
+        public int DeviceID { get; set; }
+        public string? DeviceName { get; set; }
         
     }
 }
