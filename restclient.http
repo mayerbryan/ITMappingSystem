@@ -1,5 +1,4 @@
-GET http://192.168.0.100:5063/api/Computer
-
+GET http://192.168.0.100:5063/api/Device
 ##########
 
 GET  http://192.168.0.100:5063/api/Computer/computer3
