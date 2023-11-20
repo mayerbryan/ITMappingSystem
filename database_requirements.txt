@@ -17,7 +17,6 @@ device mapped drivers
 device servers
 device software list
 device life cycle
-device implementation date
 device related KBs
 
 vendor company name
@@ -32,6 +31,8 @@ software installation package path
 
 servers list
 servers address
+server IP
 servers owner
+server geo location
 
 
