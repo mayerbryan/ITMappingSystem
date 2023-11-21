@@ -7,16 +7,15 @@ namespace ITMappingSystem.Models
 {
     public class Device
     {
-        public Device(int iD, string type, string name, string operatingSystem, int iP, string networkPort, string networkSwitch, string owner, DeviceType deviceType, DeviceAdditionalInformation deviceAdditionalInformation, DeviceMappedDrivers deviceMappedDrivers, KnowledgeBaseArticle knowledgeBaseArticle, LifeCycle lifeCycle, Server server, Software software, Vendor vendor)
+        public Device(int iD, string type, string name, string operatingSystem, int iP, string owner, Network network, DeviceType deviceType, DeviceAdditionalInformation deviceAdditionalInformation, DeviceMappedDrivers deviceMappedDrivers, KnowledgeBaseArticle knowledgeBaseArticle, LifeCycle lifeCycle, Server server, Software software, Vendor vendor)
         {
             ID = iD;
             Type = type;
             Name = name;
             OperatingSystem = operatingSystem;
             IP = iP;
-            NetworkPort = networkPort;
-            NetworkSwitch = networkSwitch;
             Owner = owner;
+            Network = network;
             DeviceType = deviceType;
             DeviceAdditionalInformation = deviceAdditionalInformation;
             DeviceMappedDrivers = deviceMappedDrivers;
@@ -32,10 +31,9 @@ namespace ITMappingSystem.Models
         public string Name { get; private set; }
         public string OperatingSystem { get; private set; }
         public int IP { get; private set; }
-        public string NetworkPort { get; private set; }
-        public string NetworkSwitch { get; private set; }
         public string Owner { get; private set; }
 
+        public Network Network {get; private set;}
         public DeviceType DeviceType { get; private set; }
         public DeviceAdditionalInformation DeviceAdditionalInformation { get; private set; }
         public DeviceMappedDrivers DeviceMappedDrivers { get; private set; }
@@ -44,6 +42,32 @@ namespace ITMappingSystem.Models
         public Server Server { get; private set; }
         public Software Software { get; private set; }
         public Vendor Vendor { get; private set; }
+
+        
+
+        public void UpdateFrom(Device updatedDevice)
+        {
+            if (updatedDevice == null)
+            {
+                throw new ArgumentNullException(nameof(updatedDevice));
+            }
+            
+            ID = updatedDevice.ID;
+            Name = updatedDevice.Name;
+            Type = updatedDevice.Type;
+            OperatingSystem = updatedDevice.OperatingSystem;
+            IP = updatedDevice.IP;
+            Network = updatedDevice.Network;
+            Owner = updatedDevice.Owner;
+            DeviceType = updatedDevice.DeviceType;
+            DeviceAdditionalInformation = updatedDevice.DeviceAdditionalInformation;
+            DeviceMappedDrivers = updatedDevice.DeviceMappedDrivers;
+            KnowledgeBaseArticle = updatedDevice.KnowledgeBaseArticle;
+            LifeCycle = updatedDevice.LifeCycle;
+            Server = updatedDevice.Server;
+            Software = updatedDevice.Software;
+            Vendor = updatedDevice.Vendor;
+        }
 
        
       

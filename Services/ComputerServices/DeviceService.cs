@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ITMappingSystem.Data;
-using ITMappingSystem.Models;
+
 
 namespace ITMappingSystem.Services.DeviceServices
 {
@@ -48,11 +44,11 @@ namespace ITMappingSystem.Services.DeviceServices
             return Devices;
         }
 
-        public async Task<Device?> GetSingleDeviceByName(string DeviceName)
+        public async Task<Device?> GetSingleDeviceByName(string name)
         {
             Console.WriteLine("requested service");
             var getSingleDevice = await _dataBaseContext.Devices
-                .Where(c => c.DeviceName == DeviceName)
+                .Where(c => c.Name == name)
                 .FirstOrDefaultAsync();
 
             if (getSingleDevice is null)
@@ -62,17 +58,31 @@ namespace ITMappingSystem.Services.DeviceServices
         }
 
 
-        public async Task<List<Device>?> UpdateDevice(int DeviceId, Device request)
+        public async Task<List<Device>?> UpdateDevice(int id, Device request)
         {
             
-            var updateDevice = await _dataBaseContext.Devices.Where(c=> c.DeviceID == DeviceId).FirstOrDefaultAsync();
-            if (updateDevice is null)
-                return null;
+            var existingDevice = await _dataBaseContext.Devices.FirstOrDefaultAsync(c => c.ID == id);
 
-            updateDevice.DeviceName = request.DeviceName;
+            if (existingDevice == null)
+            {
+                // Device with the specified ID was not found
+                return false;
+            }
 
-            await _dataBaseContext.SaveChangesAsync();
-            return await _dataBaseContext.Devices.ToListAsync();
+            // Update properties of the existing device with the values from the updated device
+            existingDevice.UpdateFrom(updatedDevice);
+
+            try
+            {
+                // Save changes asynchronously
+                await _dataBaseContext.SaveChangesAsync();
+                return true; // Update successful
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions, log, etc.
+                return false; // Update failed
+            }
         }
 
 
