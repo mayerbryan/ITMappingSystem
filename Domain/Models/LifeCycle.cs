@@ -7,15 +7,15 @@ namespace ITMappingSystem.Presentation.Models
 {
     public class LifeCycle
     {
-        public LifeCycle(string phase, DateTime startDate, DateTime endDate)
+        public LifeCycle(string phase, DateOnly implementation, DateOnly expireDate)
         {
             Phase = phase;
-            StartDate = startDate;
-            EndDate = endDate;
+            Implementation = implementation;
+            ExpireDate = expireDate;
         }
 
         public string Phase { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public DateOnly Implementation { get; set; }
+        public DateOnly ExpireDate { get; set; }
     }
 }

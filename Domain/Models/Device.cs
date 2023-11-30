@@ -2,12 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Domain.Models;
+
 
 namespace ITMappingSystem.Presentation.Models
 {
     public class Device
     {
-        public Device(int iD, string type, string name, string operatingSystem, int iP, string owner, Network network, DeviceType deviceType, DeviceAdditionalInformation deviceAdditionalInformation, DeviceMappedDrivers deviceMappedDrivers, KnowledgeBaseArticle knowledgeBaseArticle, LifeCycle lifeCycle, Server server, Software software, Vendor vendor)
+        public Device(int iD, string type, string name, string operatingSystem, int iP, string owner, Network network, DeviceType deviceType, DeviceAdditionalInformation deviceAdditionalInformation, DeviceMappedDrivers deviceMappedDrivers, Backup backup, KnowledgeBaseArticle knowledgeBaseArticle, LifeCycle lifeCycle, Server server, Software software, Vendor vendor)
         {
             ID = iD;
             Type = type;
@@ -19,6 +21,7 @@ namespace ITMappingSystem.Presentation.Models
             DeviceType = deviceType;
             DeviceAdditionalInformation = deviceAdditionalInformation;
             DeviceMappedDrivers = deviceMappedDrivers;
+            Backup = backup;
             KnowledgeBaseArticle = knowledgeBaseArticle;
             LifeCycle = lifeCycle;
             Server = server;
@@ -37,6 +40,7 @@ namespace ITMappingSystem.Presentation.Models
         public DeviceType DeviceType { get; private set; }
         public DeviceAdditionalInformation DeviceAdditionalInformation { get; private set; }
         public DeviceMappedDrivers DeviceMappedDrivers { get; private set; }
+        public Backup Backup { get; private set; }
         public KnowledgeBaseArticle KnowledgeBaseArticle { get; private set; }
         public LifeCycle LifeCycle { get; private set; }
         public Server Server { get; private set; }
@@ -62,6 +66,7 @@ namespace ITMappingSystem.Presentation.Models
             DeviceType = updatedDevice.DeviceType;
             DeviceAdditionalInformation = updatedDevice.DeviceAdditionalInformation;
             DeviceMappedDrivers = updatedDevice.DeviceMappedDrivers;
+            Backup = updatedDevice.Backup;
             KnowledgeBaseArticle = updatedDevice.KnowledgeBaseArticle;
             LifeCycle = updatedDevice.LifeCycle;
             Server = updatedDevice.Server;

@@ -19,6 +19,10 @@ device software list
 device life cycle
 device related KBs
 
+backup path
+backup Date
+backup expiration
+
 vendor company name
 vendor representative
 vendor email
