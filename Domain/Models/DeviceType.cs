@@ -1,4 +1,4 @@
-namespace ITMappingSystem.Presentation.Models
+namespace Domain.Models
 {
     public enum DeviceType
     {
