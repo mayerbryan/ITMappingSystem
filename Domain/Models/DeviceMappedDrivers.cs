@@ -1,9 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace ITMappingSystem.Presentation.Models
+namespace Domain.Models
 {
     public class DeviceMappedDrivers
     {
